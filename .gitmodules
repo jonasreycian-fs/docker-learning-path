@@ -1,0 +1,3 @@
+[submodule "02-docker-building-running-first-app/02-docker-building-running-first-app/node-app"]
+	path = 02-docker-building-running-first-app/02-docker-building-running-first-app/node-app
+	url = git@github.com:jonasreycian-fs/NodeExpressMongoDBDockerApp.git
