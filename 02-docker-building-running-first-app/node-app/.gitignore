@@ -5,6 +5,8 @@ node_modules/
 .idea/
 .settings/
 .build/
+.vscode/
 logs/access.log
+
 
 *.iml

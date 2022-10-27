@@ -10,10 +10,6 @@
 # docker compose ps                           : List all services
 # docker compose stop [service]               : Stop a service
 # docker compose start [service]              : Start a service
-# docker compose logs                         : View logs
-# docker compose exec                       : Shell into a container
-# docker compose up --scale                 : Scale containers
-
 
 # Scale the containers 
 # docker compose up -d 
@@ -23,9 +19,21 @@
 version: '3.7'
 
 services:
+  
+  # api:
+  #   image: my-api
+  #   build: 
+  #     ...
+  #   deploy:
+  #     replicas: 2                   : Define number of replicas to create for a service deployment
+  #     restart_policy:
+  #       condition: on-failure       : Define restart policy
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
 
   node:
-    # container_name: nodeapp             : Should be removed when defining multiple replicas
+    # container_name: nodeapp
     image: nodeapp
     build:
       context: .
@@ -33,8 +41,7 @@ services:
       args:
         PACKAGES: "nano wget curl"    # Packages to be installed in the environment
     ports:
-      # - "3000:3000"                      # : Define for single container creation
-      - "3000"
+      - "3000:3000"
     networks:
       - nodeapp-network
     volumes:
