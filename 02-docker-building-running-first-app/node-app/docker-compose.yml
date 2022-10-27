@@ -1,0 +1,46 @@
+# Recreate only the `node`
+# docker compose up -d --no-deps node 
+
+# Key Docker Compose Commands
+# docker compose --help   
+# docker compose up                           : Start the containers in log mode
+# docker compose up -d                        : Start the containers in detach mode
+# docker compose up -d --no-deps [service]    : Starts indicated service
+# docker compose down                         : Removes all services in a container
+# docker compose ps                           : List all services
+# docker compose stop [service]               : Stop a service
+# docker compose start [service]              : Start a service
+
+version: '3.7'
+
+services:
+
+  node:
+    container_name: nodeapp
+    image: nodeapp
+    build:
+      context: .
+      dockerfile: node.dockerfile
+      args:
+        PACKAGES: "nano wget curl"
+    ports:
+      - "3000:3000"
+    networks:
+      - nodeapp-network
+    volumes:
+      - ./logs:/var/www/logs
+    environment:
+      - NODE_ENV=production
+      - APP_VERSION=1.0
+    depends_on: 
+      - mongodb
+      
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    networks:
+      - nodeapp-network
+
+networks:
+  nodeapp-network:
+    driver: bridge
