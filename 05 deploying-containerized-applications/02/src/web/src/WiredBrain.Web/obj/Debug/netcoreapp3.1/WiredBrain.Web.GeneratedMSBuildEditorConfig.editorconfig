@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = WiredBrain.Web
+build_property.ProjectDir = d:\clients\PluralSight\Docker Fundamentals\05 deploying-containerized-applications\02\src\web\src\WiredBrain.Web\
